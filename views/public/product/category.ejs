@@ -1,33 +1,50 @@
-<section class="main-content">			
-    <div class="row">						
-        <div class="span9">								
+<section class="main-content">
+    <div class="row">
+        <div class="span9">
             <ul class="thumbnails listing-products">
-                <% data.productCates.forEach(pc => {%>
-                <li class="span3">
-                    <div class="product-box">
-                        <span class="sale_tag"></span>												
-                        <a href="<%= baseUrl  %>products/detail/<%= pc.id %>"><img alt="" src="<%= pc.url  %>"></a><br/>
-                        <a href="<%= baseUrl  %>products/detail/<%= pc.id %>" class="title"><%= pc.name %> </a><br/>
-                        <a href="#" class="category"><%= pc.description  %> </a>
-                        <p class="price">$<%= pc.price  %> </p>
-                    </div>
-                </li> 
-                <% }); %>      
-            </ul>								
+                <% data.productCates.data.forEach(pc=> {%>
+                    <li class="span3">
+                        <div class="product-box">
+                            <span class="sale_tag"></span>
+                            <a href="<%= baseUrl  %>products/detail/<%= pc.id %>"><img alt=""
+                                    src="<%= pc.url  %>"></a><br />
+                            <a href="<%= baseUrl  %>products/detail/<%= pc.id %>" class="title">
+                                <%= pc.name %>
+                            </a><br />
+                            <a href="#" class="category">
+                                <%= pc.description %>
+                            </a>
+                            <p class="price">$<%= pc.price %>
+                            </p>
+                        </div>
+                    </li>
+                    <% }); %>
+            </ul>
             <hr>
             <div class="pagination pagination-small pagination-centered">
                 <ul>
-                    <li><a href="#">Prev</a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">Next</a></li>
+                    <% if(page> 1){ %>
+                        <li><a
+                                href="<%= baseUrl  %>products/category/<%= category_id  %>?page=<%= Number(page)-1  %>">Prev</a>
+                        </li>
+                        <% } %>
+                            <% let numberPage= Math.ceil(data.productCates.count / data.limit) ; for (let index=1; index
+                                <=numberPage; index++) { %>
+                                <li class="<%= page == index ? 'active' : '' %>"><a
+                                        href="<%= baseUrl  %>products/category/<%= category_id  %>?page=<%= index  %>">
+                                        <%= index %>
+                                    </a></li>
+                                <% } %>
+                                    <% if(page < numberPage){ %>
+                                        <li><a
+                                                href="<%= baseUrl  %>products/category/<%= category_id  %>?page=<%= Number(page)+1  %>">Next</a>
+                                        </li>
+                                        <% } %>
                 </ul>
             </div>
         </div>
         <div class="span3 col">
-            <div class="block">	
+            <div class="block">
                 <ul class="nav nav-list">
                     <li class="nav-header">SUB CATEGORIES</li>
                     <li><a href="products.html">Nullam semper elementum</a></li>
@@ -37,7 +54,7 @@
                     <li><a href="products.html">Phasellus ultricies</a></li>
                     <li><a href="products.html">Donec laoreet dui</a></li>
                 </ul>
-                <br/>
+                <br />
                 <ul class="nav nav-list below">
                     <li class="nav-header">MANUFACTURES</li>
                     <li><a href="products.html">Adidas</a></li>
@@ -50,7 +67,8 @@
                 <h4 class="title">
                     <span class="pull-left"><span class="text">Randomize</span></span>
                     <span class="pull-right">
-                        <a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
+                        <a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button"
+                            href="#myCarousel" data-slide="next"></a>
                     </span>
                 </h4>
                 <div id="myCarousel" class="carousel slide">
@@ -59,9 +77,9 @@
                             <ul class="thumbnails listing-products">
                                 <li class="span3">
                                     <div class="product-box">
-                                        <span class="sale_tag"></span>												
-                                        <img alt="" src="<%= baseUrl  %>lib/themes/images/ladies/1.jpg"><br/>
-                                        <a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
+                                        <span class="sale_tag"></span>
+                                        <img alt="" src="<%= baseUrl  %>lib/themes/images/ladies/1.jpg"><br />
+                                        <a href="product_detail.html" class="title">Fusce id molestie massa</a><br />
                                         <a href="#" class="category">Suspendisse aliquet</a>
                                         <p class="price">$261</p>
                                     </div>
@@ -71,9 +89,9 @@
                         <div class="item">
                             <ul class="thumbnails listing-products">
                                 <li class="span3">
-                                    <div class="product-box">												
-                                        <img alt="" src="<%= baseUrl  %>lib/themes/images/ladies/2.jpg"><br/>
-                                        <a href="product_detail.html" class="title">Tempor sem sodales</a><br/>
+                                    <div class="product-box">
+                                        <img alt="" src="<%= baseUrl  %>lib/themes/images/ladies/2.jpg"><br />
+                                        <a href="product_detail.html" class="title">Tempor sem sodales</a><br />
                                         <a href="#" class="category">Urna nec lectus mollis</a>
                                         <p class="price">$134</p>
                                     </div>
@@ -83,8 +101,8 @@
                     </div>
                 </div>
             </div>
-            <div class="block">								
-                <h4 class="title"><strong>Best</strong> Seller</h4>								
+            <div class="block">
+                <h4 class="title"><strong>Best</strong> Seller</h4>
                 <ul class="small-product">
                     <li>
                         <a href="#" title="Praesent tempor sem sodales">
@@ -103,7 +121,7 @@
                             <img src="<%= baseUrl  %>lib/themes/images/ladies/5.jpg" alt="Fusce id molestie massa">
                         </a>
                         <a href="#">Fusce id molestie massa</a>
-                    </li>   
+                    </li>
                 </ul>
             </div>
         </div>

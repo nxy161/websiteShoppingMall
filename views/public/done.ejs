@@ -1,0 +1,8 @@
+<h1>Tạo đơn hàng thành công!</h1>
+<script>
+    let cttt = localStorage.getItem('key2');
+    let carts = JSON.parse(cttt);
+    carts = [];
+    let setJson = JSON.stringify(carts);
+    localStorage.setItem("key2", setJson);
+</script>

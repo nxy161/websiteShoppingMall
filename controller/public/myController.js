@@ -1,7 +1,6 @@
 var banner = require("../../model/bannerModel");
 var baseUrl = "http://localhost:3000/";
 var categorie = require("../../model/categoriesModel");
-var productCate = require("../../model/productcateModel");
 async function renderView(res, view, data = {}) {
   let tmp = {
     view: view,

@@ -10,20 +10,20 @@
                     <h4 class="title">
                         <span class="pull-left"><span class="text"><span class="line">Feature
                                     <strong>Products</strong></span></span></span>
+
                         <span class="pull-right">
-                            <a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button"
-                                href="#myCarousel" data-slide="next"></a>
+                            <a class="left button" href="" data-slide="prev"></a><a class="right button" href=""
+                                data-slide="next"></a>
                         </span>
                     </h4>
                     <div id="myCarousel" class="myCarousel carousel slide">
                         <div class="carousel-inner">
                             <div class="active item">
                                 <ul class="thumbnails">
-                                    <% data.products.forEach(pd=> {%>
+                                    <% data.products.data.forEach(pd=> {%>
                                         <li class="span3">
                                             <div class="product-box">
                                                 <span class="sale_tag"></span>
-
                                                 <p><a href="product_detail.html"><img src="<%= pd.url %> " alt="" /></a>
                                                 </p>
                                                 <a href="product_detail.html" class="title">
@@ -35,10 +35,29 @@
                                                 <p class="price">
                                                     <%= pd.price %>$
                                                 </p>
-
                                             </div>
                                         </li>
                                         <% }); %>
+                                </ul>
+                            </div>
+                            <div class="pagination pagination-small pagination-centered">
+                                <ul>
+                                    <% if(page> 1){ %>
+                                        <li><a href="<%= baseUrl  %>?page=<%= Number(page)-1  %>">Prev</a>
+                                        </li>
+                                        <% } %>
+                                            <% let numberPage=Math.ceil(data.products.count / data.limit) ; for (let
+                                                index=1; index <=numberPage; index++) { %>
+                                                <li class="<%= page == index ? 'active' : '' %>"><a
+                                                        href="<%= baseUrl  %>?page=<%= index  %>">
+                                                        <%= index %>
+                                                    </a></li>
+                                                <% } %>
+                                                    <% if(page < numberPage){ %>
+                                                        <li><a
+                                                                href="<%= baseUrl  %>?page=<%= Number(page)+1  %>">Next</a>
+                                                        </li>
+                                                        <% } %>
                                 </ul>
                             </div>
                         </div>
