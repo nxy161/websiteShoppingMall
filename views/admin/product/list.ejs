@@ -1,0 +1,103 @@
+<div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+            <div>
+                <form action=""
+                    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+                    method="get">
+                    <div class="input-group">
+                        <input name="find" type="text" class="form-control bg-light border-0 small"
+                            placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fas fa-search fa-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- <div class="dropdown mb-4" style="margin:22px 0px 0px 22px ;">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Search Categories
+                </button>
+                <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div> -->
+        </nav>
+
+        <div style="width: 100%;">
+            <div class="card-body " style="width: 100%;">
+                <div class="table-responsive text-center">
+                    <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Categories name</th>
+                                <th>Active</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% data.listProduct.data.forEach(lp=> {%>
+                                <tr>
+                                    <td class="text-left">
+                                        <%= lp.name %>
+                                    </td>
+                                    <td class="text-right">
+                                        <%= lp.price %>
+                                    </td>
+                                    <td>
+                                        <%= lp.catename %>
+                                    </td>
+                                    <td>
+                                        <%= lp.active %>
+                                    </td>
+                                    <td class="d-flex">
+                                        <a href="<% baseUrlAdmin %>product/del/<%= lp.id %>"
+                                            class="btn btn-group btn-danger">Xoá<input name="idDelete" type="hidden"
+                                                value="<%= lp.id %>"></a>
+                                        <a href="<% baseUrlAdmin %>product/edit/<%= lp.id %>"
+                                            class="btn btn-group btn-danger ml-3">Sửa<input name="idEdit"
+                                                type="hidden"></a>
+                                                <a href="<% baseUrlAdmin %>product/upload/<%= lp.id %>"
+                                                    class="btn btn-group btn-danger ml-3">Upload Image<input name="idEdit"
+                                                        type="hidden"></a>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                        </tbody>
+                    </table>
+                    <div class="dataTables_paginate paging_simple_numbers">
+                        <ul class="pagination d-inline-flex">
+                            <% if(page> 1){ %>
+                                <li class="paginate_button page-item previous"><a class="page-link"
+                                        href="<%= baseUrlAdmin  %>product?find=<%= data.find %>&page=<%= Number(page)-1  %>">Prev</a>
+                                </li>
+                                <% } %>
+                                    <% let numberPage=Math.ceil(data.listProduct.count / data.limit) ; for (let index=1;
+                                        index <=numberPage; index++) { %>
+                                        <li class="<%= page == index ? 'active' : '' %> paginate_button page-item "><a
+                                                href="<%= baseUrlAdmin  %>product?find=<%= data.find %>&page=<%= index  %>" class="page-link">
+                                                <%= index %>
+                                            </a></li>
+                                        <% } %>
+                                            <% if(page < numberPage){ %>
+                                                <li class="paginate_button page-item "><a class="page-link"
+                                                        href="<%= baseUrlAdmin  %>product?find=<%= data.find %>&page=<%= Number(page)+1  %>">Next</a>
+                                                </li>
+                                                <% } %>
+                        </ul>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

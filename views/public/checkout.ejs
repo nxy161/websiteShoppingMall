@@ -7,15 +7,18 @@
             </tbody>
         </table>
     </div>
-    <div class="span6">
+    <div class="span6" id="thongtin">
         <h3 style="border-bottom: 2px solid greenyellow ;">THÔNG TIN ĐẶT HÀNG</h3>
-        <form action="/checkout" method="post">
+        <form action="/checkout" method="post" onsubmit="return validate()">
             <p>Name</p>
-            <input type="text" name="name"  required  maxlength="100" id="name" pattern="[a-zA-Z]{3,}">
+            <input type="text" name="name" id="nameip">
+            <span id="nameErr"></span>
             <p>Phone</p>
-            <input type="tel" name="phone" required id="phone" pattern="^[0]\d{9,10}$">
+            <input type="tel" name="phone" id="phone">
+            <span id="phoneErr"></span>
             <p>Address</p>
-            <input type="text" name="address" required  maxlength="100" id="address" pattern="[a-zA-Z]{3,}">
+            <input type="text" name="address" maxlength="100" id="address">
+            <span id="addressErr"></span>
             <input type="hidden" name="total_price" id="total">
             <input type="hidden" name="products" id="products">
             <br>
@@ -29,7 +32,12 @@
     let carts = JSON.parse(cttt);
     let index1;
     let total = 0;
-    loadcarts();
+    if (carts.length == 0) {  
+        $('#showitem').html('<h1>BAN CHUA CHON SAN PHAM</h1>');
+        $('#thongtin').html('')
+    }else{
+        loadcarts();
+    }
     function loadcarts() {
         let a;
         carts.forEach((ct, id) => {
@@ -56,4 +64,36 @@
     }
     $('#total').val(total);
     $('#products').val(cttt);
+
+    function validate() {
+
+        let err = [];
+        if ($('#nameip').val() == '') {
+            $('#nameip').css('border', '1px solid red');
+            $('#nameErr').text('Name không được rỗng!');
+            err.push('#nameip');
+        } else {
+            $('#nameErr').text('');
+        }
+
+
+        if ($('#phone').val() == '') {
+            $('#phone').css('border', '1px solid red');
+            $('#phoneErr').text('Phone không được rỗng!');
+            err.push('#phone');
+        } else {
+            $('#phoneErr').text('');
+        }
+
+
+        if ($('#address').val() == '') {
+            $('#address').css('border', '1px solid red');
+            $('#addressErr').text('Address không được rỗng!');
+            err.push('#address');
+        } else {
+            $('#addressErr').text('');
+        }
+
+        return err.length == 0 ? true : false;
+    }
 </script>

@@ -1,0 +1,44 @@
+<div style="margin: 20px 20px;">
+    <form ref='uploadForm' id='uploadForm' action="/admin/user/edit/done" method="post" encType="multipart/form-data">
+        <p>Nhập tên<br>
+            <input type="text" name="name" value="<%= data[0].fullName %>">
+        </p>
+        <p>Giới tính (Male or FeMale)<br>
+            <select name="gender" id="">
+                <% if(data[0].gender == 'male'){ %> 
+                <option value="male" selected>Male</option>
+                <% } %> 
+                <% if(data[0].gender == 'female'){ %> 
+                <option value="female" selected>FeMale</option>
+                <% } %> 
+            </select>
+        </p>
+        <p>Nhập ngày sinh<br>
+            <input type="text" name="birthday">
+        </p>
+        <p>Avatar <br>
+            <input type="file" name="sampleFile"/>
+        </p>
+        <p>Nhập UserID <br>
+            <input type="text" name="userID" value="<%= data[0].user_id %> ">
+        </p>
+        <p>Trạng thái(Y or N)<br>
+            <select name="active" id="">
+                <% if(data[0].active == 'Y'){ %> 
+                    <option value="Y" selected>Active</option>
+                    <% } %> 
+                <% if(data[0].active == 'N'){ %> 
+                    <option value="N" selected>UnActive</option>
+                    <% } %> 
+            </select>
+        </p><br>
+        <p>Username <br>
+            <input type="text" name="username" value="<%= data[0].username %> "/>
+        </p>
+        <p>Password <br>
+            <input type="password" name="password" value="<%= data[0].password %>"/>
+        </p>
+        <input type="hidden" value="<%= data[0].id %> " name="idedit">
+        <input type="submit">
+    </form>
+</div>

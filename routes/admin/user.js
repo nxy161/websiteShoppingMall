@@ -1,0 +1,10 @@
+var express = require("express");
+var router = express.Router();
+var userCtrl = require('../../controller/admin/userController');
+router.get('', userCtrl.getlistUser);
+router.get("/add", userCtrl.getpageAdd);
+router.post('/add', userCtrl.adduser);
+router.get("/del/:id",userCtrl.deluser);
+router.get('/edit/:id', userCtrl.getuserEdit);
+router.post('/edit/done', userCtrl.editUser);
+module.exports = router;

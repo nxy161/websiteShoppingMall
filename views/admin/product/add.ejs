@@ -1,0 +1,29 @@
+<div style="margin: 50px 0px 0px 100px;">
+    <form action="/admin/product/addproduct" method="post">
+        <p>Nhập tên <br>
+            <input type="text" name="name">
+        </p>
+        <p>Nhập giá <br>
+            <input type="text" name="price">
+        </p>
+        <p>Nhập Category <br>
+            <select name="cate" id="">
+                <% data.categories.forEach(ct=>{ %>
+                    <option value="<%= ct.id %>">
+                        <%= ct.name %>
+                    </option>
+                    <% }) %>
+            </select>
+        </p>
+        <p>Nhập Desciption<br>
+            <input type="text" name="description">
+        </p>
+        <p>Trạng thái(Y or N)<br>
+            <select name="active" id="">
+                <option value="Y" selected>Active</option>
+                <option value="N">UnActive</option>
+            </select>
+        </p>
+        <input type="submit">
+    </form>
+</div>

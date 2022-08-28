@@ -7,6 +7,7 @@ async function getCategories(req, res, next) {
   // req.params.id id danh mục mục
   var id = req.params.id;
   let page = req.query.page ? req.query.page : 1;
+
   let limit = 6;
   let offset = (page - 1) * limit;
   let data = [];

@@ -1,0 +1,35 @@
+<div style="margin: 20px 20px;">
+    <form ref='uploadForm' id='uploadForm' action="/admin/user/add" method="post" encType="multipart/form-data">
+        <p>Nhập tên<br>
+            <input type="text" name="name">
+        </p>
+        <p>Giới tính (Male or FeMale)<br>
+            <select name="gender" id="">
+                <option value="male" selected>Male</option>
+                <option value="female">FeMale</option>
+            </select>
+        </p>
+        <p>Nhập ngày sinh<br>
+            <input type="text" name="birthday" >
+        </p>
+        <p>Avatar <br>
+            <input type="file" name="sampleFile" />
+        </p>
+        <p>Nhập UserID <br>
+            <input type="text" name="userID">
+        </p>
+        <p>Trạng thái(Y or N)<br>
+            <select name="active" id="">
+                <option value="Y" selected>Active</option>
+                <option value="N">UnActive</option>
+            </select>
+        </p><br>
+        <p>Username <br>
+            <input type="text" name="username" />
+        </p>
+        <p>Password <br>
+            <input type="password" name="password" />
+        </p>
+        <input type="submit">
+    </form>
+</div>

@@ -1,0 +1,33 @@
+<div style="margin: 50px 0px 0px 100px;">
+    <form action="/admin/product/edit/done" method="post">
+        <input type="hidden" name="id" value="<%= data.productEdit[0].id %>">
+        <p>Nhập tên <br>
+            <input type="text" name="name" value="<%= data.productEdit[0].name %>">
+        </p>
+        <p>Nhập giá <br>
+            <input type="text" name="price" value="<%= data.productEdit[0].price %>">
+        </p>
+        <p>Nhập Category <br>
+            <select name="cate" id="">
+                <% data.categories.forEach(ct=>{ %>
+                    <option value="<%= ct.id %>">
+                        <%= ct.name %>
+                    </option>
+                    <% }) %>
+            </select>
+        </p>
+        <p>Trạng thái(Y or N)<br>
+            <select name="active" id="">
+                <% if(data.productEdit[0].active=='Y' ){ %>
+                    <option value="Y" selected>Active</option>
+                    <option value="N">UnActive</option>
+                    <% } %>
+                        <% if(data.productEdit[0].active=='N' ){ %>
+                            <option value="Y">Active</option>
+                            <option value="N" selected>UnActive</option>
+                            <% } %>
+            </select>
+        </p>
+        <input type="submit">
+    </form>
+</div>

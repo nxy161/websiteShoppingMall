@@ -1,0 +1,47 @@
+<div style="width: 100%;">
+    <a href="<% baseUrlAdmin %>user/add" class="btn btn-group btn-danger" style="margin: 20px 20px;">ADD USER</a>
+    <div class="card-body " style="width: 100%;">
+        <div class="table-responsive text-center">
+            <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Birthday</th>
+                        <th>Avatar</th>
+                        <th>Active</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% data.forEach(lp=> {%>
+                        <tr>
+                            <td class="text-left">
+                                <%= lp.fullName %>
+                            </td>
+                            <td class="text-right">
+                                <%= lp.gender %>
+                            </td>
+                            <td>
+                                <%= moment(lp.birthday).subtract(10, 'days' ).calendar() %>
+                            </td>
+                            <td>
+                                <img src="<%= baseUrl %>images/product/<%= lp.avatar %>" alt="" style="width: 100px;">
+                            </td>
+                            <td>
+                                <%= lp.active %>
+                            </td>
+                            <td>
+                                <a href="<% baseUrlAdmin %>user/del/<%= lp.id %>"
+                                    class="btn btn-group btn-danger">Xoá<input name="idDelete" type="hidden"
+                                        value="<%= lp.id %>"></a>
+                                <a href="<% baseUrlAdmin %>user/edit/<%= lp.id %>"
+                                    class="btn btn-group btn-danger ml-3">Sửa<input name="idEdit" type="hidden"></a>
+                            </td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+
+<div>
+	<div class="container__img">
+				<% data.forEach(lp=> {%>
+					<div class="item">
+						<img src="<%= baseUrl %>images/product/<%= lp.url %>" alt="" style="width: 200px;"> <br>
+						<a href="<%= baseUrlAdmin %>product/deleteimg/<%= lp.id %>"
+							class="btn btn-group btn-danger">Xoá</a>
+					</div>
+				<% }); %>
+
+	</div>
+	<div class="uploadform" >
+		<form ref='uploadForm' id='uploadForm' action='http://localhost:3000/admin/product/upload' method='post'
+			encType="multipart/form-data">
+			<input type="file" name="sampleFile" />
+			<input type='submit' value='Upload!' />
+			<input type="hidden" value="<%= idproduct %>" name="productid">
+		</form>
+	</div>
+</div>
