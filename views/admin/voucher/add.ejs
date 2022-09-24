@@ -1,0 +1,29 @@
+<div style="margin: 20px 20px;">
+    <form ref='uploadForm' id='uploadForm' action="/admin/voucher/add" method="post" encType="multipart/form-data">
+        <p>Nhập tên voucher<br>
+            <input type="text" name="name">
+        </p>
+        <p>Type Discount<br>
+            <select name="typediscount" id="">
+                <option value="percent" selected>Percent(%)</option>
+                <option value="amount">Amount(đ)</option>
+            </select>
+        </p>
+        <p>Nhập discount<br>
+            <input type="text" name="discount" >
+        </p>
+        <p>Note<br>
+            <input type="text" name="note" />
+        </p>
+        <p>Date Expired<br>
+            <input type="type" name="date">
+        </p>
+        <p>Nhập UserID<br>
+            <input type="text" name="userID">
+        </p>
+        <p>Max Use<br>
+            <input type="text" name="maxuse" />
+        </p>
+        <input type="submit">
+    </form>
+</div>

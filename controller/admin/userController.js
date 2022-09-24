@@ -16,11 +16,8 @@ async function postLogin(req, res, next) {
   let result = await userModel.getUser(userLogin);
 
   if (result && result.length > 0) {
-    // req.session.user = result[0];
-    // req.session.save(function (err) {
-    // if (err) return next(err)
+    req.session.user = result[0];
     res.redirect("/admin");
-    //   })
   }
   let data = {
     error: "Sai tên đăng nhập hoặc mật khẩu !",
@@ -30,15 +27,7 @@ async function postLogin(req, res, next) {
 
 async function logout(req, res, next) {
   req.session.user = null;
-  req.session.save(function (err) {
-    if (err) next(err);
-    // regenerate the session, which is good practice to help
-    // guard against forms of session fixation
-    req.session.regenerate(function (err) {
-      if (err) next(err);
-      res.redirect("/login");
-    });
-  });
+  res.redirect("/login");
 }
 async function getlistUser(req, res, next) {
   let data = await userModel.listUser();
@@ -69,7 +58,7 @@ async function adduser(req, res, next) {
   let user = {
     name: req.body.name,
     gender: req.body.gender,
-    birthday:moment(req.body.birthday).format("YYYY-MM-DD"),
+    birthday: moment(req.body.birthday).format("YYYY-MM-DD"),
     avatar: sampleFile.name,
     userid: req.body.userID,
     active: req.body.active,

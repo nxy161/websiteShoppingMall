@@ -18,8 +18,9 @@
                     </tr>
                 </thead>
                 <tbody id="showitem">
-
+                       
                 </tbody>
+                
             </table>
             <h4>What would you like to do next?</h4>
             <p>Choose if you have a discount code or reward points you want to use or would like to estimate your
@@ -117,9 +118,11 @@
 <script src="themes/js/common.js"></script>
 
 <script>
+
     let cttt = localStorage.getItem('key2');
     let carts = JSON.parse(cttt);
     let index1;
+    let totalsum;
     loadcarts();
     function loadcarts() {
         let a;
@@ -144,10 +147,12 @@
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
-									<td><strong >TOTAL: ${total.toFixed(2)}$</strong></td>
-								</tr>	`
+									<td><strong id='total'>TOTAL: ${total.toFixed(2)}$</strong></td>
+								</tr>`
+        totalsum = total
         $('#showitem').html(a);
     }
+   
     function add(index1) {
         carts[index1].quantity = carts[index1].quantity + 1;
         let setJson = JSON.stringify(carts);
@@ -169,4 +174,5 @@
         localStorage.setItem("key2", setJson);
         loadcarts();
     }
+  
 </script>

@@ -1,0 +1,54 @@
+<div style="width: 100%;">
+    <a href="<% baseUrlAdmin %>voucher/add" class="btn btn-group btn-danger" style="margin: 20px 20px;">Add Voucher</a>
+    <div class="card-body " style="width: 100%;">
+        <div class="table-responsive text-center">
+            <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type Discount</th>
+                        <th>Discount</th>
+                        <th>Note</th>
+                        <th>Date Expired</th>
+                        <th>User ID</th>
+                        <th>Max use</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% data.forEach(lp=> {%>
+                        <tr>
+                            <td class="text-left">
+                                <%= lp.name %>
+                            </td>
+                            <td class="text-right">
+                                <%= lp.type_discount %>
+                            </td>
+                            <td>
+                                <%= lp.discount %> 
+                            </td>
+                            <td>
+                                <%= lp.note %> 
+                            </td>
+                            <td>
+                                <%= moment(lp.date_expired).format('DD-MM-YYYY') %>
+                            </td>
+                            <td>
+                                <%= lp.user_id %>
+                            </td>
+                            <td>
+                                <%= lp.max_use %>
+                            </td>
+                            <td>
+                                <a href="<% baseUrlAdmin %>voucher/del/<%= lp.id %>"
+                                    class="btn btn-group btn-danger">Xoá</a>
+                                <!-- <a href="<% baseUrlAdmin %>voucher/edit/<%= lp.id %>"
+                                    class="btn btn-group btn-danger ml-3">Sửa</a> -->
+                            </td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -22,17 +22,16 @@ function insertInvoice(invoice) {
 
 function insertInvoiceDetail(products, invoiceId) {
   return new Promise((resolve, reject) => {
-
     let valueInsert = []; 
+    console.log(products);
     products.forEach((product) => {
       let tam = [];
       tam.push(invoiceId);
-      tam.push(product.product_id);
+      tam.push(product.id);
       tam.push(product.price);
       tam.push(product.quantity);
       valueInsert.push(tam);
     });
-
     con.query(
       `
       INSERT INTO invoice_details( invoice_id, product_id, price, quantity) 

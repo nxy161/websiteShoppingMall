@@ -24,12 +24,18 @@
                                         <li class="span3">
                                             <div class="product-box">
                                                 <span class="sale_tag"></span>
-                                                <p><a href="<%= baseUrl  %>products/detail/<%= pd.id %>"><img src="<%= pd.url %> " alt="" /></a>
+                                                <p><a href="<%= baseUrl  %>products/detail/<%= pd.product_id %>"><img
+                                                            src="<%= baseUrl %>images/product/<%= pd.url %>" alt=""
+                                                            style="object-fit: cover;
+                                                            object-position: right;
+                                                            width: 200px;
+                                                            height: 300px;
+                                                    " /></a>
                                                 </p>
-                                                <a href="<%= baseUrl  %>products/detail/<%= pd.id %>" class="title">
+                                                <a href="<%= baseUrl  %>products/detail/<%= pd.product_id %>" class="title">
                                                     <%= pd.name %>
                                                 </a><br />
-                                                <a href="<%= baseUrl  %>products/detail/<%= pd.id %>" class="category">
+                                                <a href="<%= baseUrl  %>products/detail/<%= pd.product_id %>" class="category">
                                                     <%= pd.description %>
                                                 </a>
                                                 <p class="price">

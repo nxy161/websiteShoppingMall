@@ -23,7 +23,7 @@
                                 <%= lp.gender %>
                             </td>
                             <td>
-                                <%= moment(lp.birthday).subtract(10, 'days' ).calendar() %>
+                                <%= moment(lp.birthday).format("DD-MM-YYYY") %>
                             </td>
                             <td>
                                 <img src="<%= baseUrl %>images/product/<%= lp.avatar %>" alt="" style="width: 100px;">

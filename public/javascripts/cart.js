@@ -1,6 +1,9 @@
 function addtocart() {
   var arr = localStorage.getItem("key2");
   var carts = JSON.parse(arr);
+  if (!carts) {
+    carts = [];
+  }
   // var carts = [];
   let data = {
     id: $("#idproduct").text(),

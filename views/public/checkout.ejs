@@ -5,6 +5,18 @@
             <tbody id="showitem">
 
             </tbody>
+            <tfoot id="tfoot">
+                <th>Voucher</th>
+                <td><select name="" id="voucher" onchange="selectVoucher()">
+                        <option value="" selected>Select Voucher</option>
+                        <% datavoucher.forEach(dc=> {%>
+                            <option value="<%= dc.discount %>">
+                                <%= dc.discount %>%
+                            </option>
+                            <% }); %>
+                    </select>
+                </td>
+            </tfoot>
         </table>
     </div>
     <div class="span6" id="thongtin">
@@ -20,6 +32,7 @@
             <input type="text" name="address" maxlength="100" id="address">
             <span id="addressErr"></span>
             <input type="hidden" name="total_price" id="total">
+            <input type="hidden" name="total_defaul" id="totaldefaul">
             <input type="hidden" name="products" id="products">
             <br>
             <button type="submit">Chốt đơn</button>
@@ -32,10 +45,12 @@
     let carts = JSON.parse(cttt);
     let index1;
     let total = 0;
-    if (carts.length == 0) {  
+    let totalsum;
+    if (carts.length == 0) {
         $('#showitem').html('<h1>BAN CHUA CHON SAN PHAM</h1>');
         $('#thongtin').html('')
-    }else{
+        $('#tfoot').html('')
+    } else {
         loadcarts();
     }
     function loadcarts() {
@@ -58,15 +73,20 @@
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
-									<td><strong >TOTAL: ${total.toFixed(2)}$</strong></td>
+									<td><strong id='totalsum'>TOTAL: ${total.toFixed(2)}$</strong></td>
 								</tr>	`
+        totalsum = total;
         $('#showitem').html(a);
+        $('#totaldefaul').val(total);
     }
-    $('#total').val(total);
+    function selectVoucher() {
+        let voucher = $('#voucher').val();
+        totalsum = (totalsum * 100) / voucher;
+        $('#totalsum').text(totalsum.toFixed(2));
+        $('#total').val(totalsum);
+    }
     $('#products').val(cttt);
-
     function validate() {
-
         let err = [];
         if ($('#nameip').val() == '') {
             $('#nameip').css('border', '1px solid red');
@@ -96,4 +116,5 @@
 
         return err.length == 0 ? true : false;
     }
+
 </script>

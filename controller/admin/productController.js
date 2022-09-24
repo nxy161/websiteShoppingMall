@@ -62,6 +62,10 @@ async function insertProduct(req, res, next) {
   };
   let data = await listProducts.insertProduct(product);
   res.redirect("/admin/product");
+  // res.send({
+  //   status: true,
+  //   message: 'Thêm sản phẩm thành công'
+  // })
 }
 async function getPageCategory(req, res, next) {
   layout.render(res, "product/category", {});

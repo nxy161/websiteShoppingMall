@@ -1,10 +1,8 @@
-
-
-
 <%  if(data && data.banners){ %>
     <section  class="homepage-slider" id="home-slider">
         <div class="flexslider">
             <ul class="slides">
+                
                 <%  data.banners.forEach(bn => {%>
                     <li>
                         <img src="<%= baseUrl + bn.url %>" alt="" />

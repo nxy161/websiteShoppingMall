@@ -25,7 +25,7 @@ async function getCategories(req, res, next) {
     limit: limit,
   });
 }
-async function getProductDetail(req, res) {
+async function getProductDetail(req, res,next) {
   var id = req.params.id;
   let productDetails = await productModel.getDetail(id);
   layout.render(res, "product/product_details", {
